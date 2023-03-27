@@ -41,11 +41,17 @@ def formatar_df():
 
 
 def executar():
-    read_excel()
-    concat_merge_df()
-    formatar_df()
-    with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-        print(faturamento_total)
+    try:
+        read_excel()
+        concat_merge_df()
+        formatar_df()
+        with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+            print(faturamento_total)
+    except NameError as e:
+        print(f'NameError: {e}')
+    except FileNotFoundError as e:
+        print(f'FileNotFoundError: {e}')
+        print('FileNotFoundError: Arquivo e/ou diretorio do arquivo não foram encontrados.')
 
 
 executar()
